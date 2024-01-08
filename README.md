@@ -1,6 +1,6 @@
 # Manastone
 
-Use manastone to quickly get back to full mana
+Use manastone to quickly get back mana
 
 ## Requirements
 
@@ -15,3 +15,7 @@ Download `Manastone` and extract it into your MQ lua directory
 ### Running
 
 Start script with `/lua run Manastone`
+
+### Commands
+
+- `/manastone <stopManaPct> <stopHpPct>` - Set when to stop manastone

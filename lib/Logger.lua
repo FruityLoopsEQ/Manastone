@@ -1,6 +1,6 @@
 local mq = require("mq")
 
-Logger = {}
+local Logger = {}
 Logger.loglevel = "info"
 Logger.prefix = ""
 
