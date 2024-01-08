@@ -37,7 +37,6 @@ local function manastone()
 
         local hpPct = mq.TLO.Me.PctHPs()
         local inCombat = mq.TLO.Me.CombatState() == "COMBAT"
-        local moving = mq.TLO.Me.Moving()
         local stunned = mq.TLO.Me.Stunned()
         local standing = mq.TLO.Me.Standing()
         local casting = mq.TLO.Me.Casting()
@@ -56,12 +55,6 @@ local function manastone()
             Logger.Info("Casting")
             return
         end
-
-        if (moving) then
-            Logger.Info("Moving")
-            return
-        end
-
 
         if (stunned) then
             Logger.Info("Stunned")
