@@ -1,12 +1,10 @@
 local mq = require("mq")
 
-local function in_game() return mq.TLO.MacroQuest.GameState() == 'INGAME' end
-
 local Logger = {}
 
 Logger.loglevels = {
-    ['debug'] = { level = 1, abbreviation = 'DEBUG', },
-    ['info']  = { level = 2, abbreviation = 'INFO', }
+    ["debug"] = { level = 1, abbreviation = "DEBUG", },
+    ["info"]  = { level = 2, abbreviation = "INFO" }
 }
 
 function Logger.Output(paramLogLevel, message)
@@ -43,7 +41,7 @@ local function manastone()
         local stunned = mq.TLO.Me.Stunned()
         local standing = mq.TLO.Me.Standing()
         local casting = mq.TLO.Me.Casting()
-        
+
         if (hpPct <= STOP_HP_PCT) then
             Logger.Info(string.format("Low HP - %d", hpPct) .. "%")
             return
@@ -54,7 +52,7 @@ local function manastone()
             return
         end
 
-        if (casting ~= nil) then
+        if (casting) then
             Logger.Info("Casting")
             return
         end
@@ -78,15 +76,20 @@ local function manastone()
     end
 end
 
+local function inGame() return mq.TLO.MacroQuest.GameState() == "INGAME" end
+
 local function start()
-    Logger.Debug("Start Manastone")
+    Logger.Info("Start")
+
+    Logger.Info(string.format("Stop HitPoints Percentage=%s", STOP_HP_PCT))
+    Logger.Info(string.format("Stop Mana Percentage=%s", STOP_MANA_PCT))
 
     while true do
-        if in_game() then
+        if inGame() then
             manastone()
         end
 
-        mq.delay(100)
+        mq.delay("500ms")
     end
 end
 
